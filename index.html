@@ -75,13 +75,26 @@
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.3);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .university-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .university-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
         }
         
         .profile h1 {
@@ -318,6 +331,13 @@
                 width: 80%;
                 text-align: center;
             }
+            
+            .university-logo {
+                position: static;
+                margin: 0 auto 1rem;
+                width: 60px;
+                height: 60px;
+            }
         }
         
         .last-updated {
@@ -365,9 +385,14 @@
     <header>
         <div class="container">
             <div class="profile">
-                <div class="profile-img">
-                    <i class="fas fa-user-graduate"></i>
+                <!-- استبدل "profile.jpg" باسم صورتك الشخصية -->
+                <img src="PhotoProfile.jpg" alt="Mohand Mahdi" class="profile-img">
+                
+                <!-- استبدل "BadgeUniv.png" بشعار جامعتك -->
+                <div class="university-logo">
+                    <img src="BadgeUniv.jpeg" alt="Logo Université">
                 </div>
+                
                 <h1>Mohand Mahdi</h1>
                 <p>Étudiant en Réseaux Électrique et Production D'énergie</p>
                 <div class="university-badge">
@@ -387,7 +412,7 @@
                 <div class="nav-tab" data-target="theorie">Théorie du champs</div>
                 <div class="nav-tab" data-target="electronique">Électronique de puissance</div>
                 <div class="nav-tab" data-target="schemas">Schémas et appareillage</div>
-                <div class="nav-tab" data-target="systeme">Systèmes asservis</div>
+                <div class="nav-tab" data-target="systeme">Système asservi</div>
                 <div class="nav-tab" data-target="capteur">Capteur</div>
             </div>
             
@@ -453,7 +478,7 @@
                             <div class="subject-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h3 class="tp-title">Système asservi</h3>
+                            <h3 class="tp-title">Systèmes asservis</h3>
                             <p class="tp-description">Analyse et conception des systèmes de régulation et d'asservissement.</p>
                             <a href="#" class="tp-link" data-subject="systeme"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
                         </div>
@@ -474,7 +499,7 @@
                 </div>
             </div>
             
-            <!-- Sections individuelles pour chaque matière -->
+            <!-- Sections individuelles لكل مادة -->
             <div id="reseaux" class="content-section">
                 <a href="#" class="back-button"><i class="fas fa-arrow-left"></i> Retour à tous les TP</a>
                 <div class="subject-header">
@@ -535,7 +560,7 @@
                 </div>
             </div>
             
-            <!-- Sections pour les autres matières (structure similaire) -->
+            <!-- Sections pour les autres matières (بنفس الهيكل) -->
             
             <div class="last-updated">
                 Dernière mise à jour: <span id="current-date"></span>
@@ -571,17 +596,13 @@
         // التنقل بين التبويبات
         document.querySelectorAll('.nav-tab').forEach(tab => {
             tab.addEventListener('click', () => {
-                // إزالة النشاط من جميع التبويبات
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                // إضافة النشاط للتبويب المحدد
                 tab.classList.add('active');
                 
-                // إخفاء جميع الأقسام
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
                 
-                // إظهار القسم المحدد
                 const targetId = tab.getAttribute('data-target');
                 document.getElementById(targetId).classList.add('active');
             });
@@ -593,20 +614,15 @@
                 e.preventDefault();
                 const subject = link.getAttribute('data-subject');
                 
-                // إزالة النشاط من جميع التبويبات
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                // إضافة النشاط للتبويب المناسب
                 document.querySelector(`.nav-tab[data-target="${subject}"]`).classList.add('active');
                 
-                // إخفاء جميع الأقسام
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
                 
-                // إظهار قسم المادة المحددة
                 document.getElementById(subject).classList.add('active');
                 
-                // التمرير إلى الأعلى
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
@@ -616,17 +632,13 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // إزالة النشاط من جميع التبويبات
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                // إضافة النشاط لتبويب "Tous les TP"
                 document.querySelector('.nav-tab[data-target="all"]').classList.add('active');
                 
-                // إخفاء جميع الأقسام
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
                 
-                // إظهار قسم "Tous les TP"
                 document.getElementById('all').classList.add('active');
             });
         });
