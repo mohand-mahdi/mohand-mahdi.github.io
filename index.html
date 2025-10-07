@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Travaux Pratiques</title>
+    <title>Portfolio Universitaire - Travaux Pratiques</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -12,6 +13,8 @@
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #2c3e50, #3498db);
+            --card-gradient: linear-gradient(135deg, #3498db, #2c3e50);
         }
         
         * {
@@ -34,11 +37,26 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary-color), #1a2530);
+            background: var(--gradient);
             color: white;
             padding: 2rem 0;
             text-align: center;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
         }
         
         .profile {
@@ -46,6 +64,8 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .profile-img {
@@ -53,24 +73,37 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--secondary-color);
+            border: 4px solid rgba(255, 255, 255, 0.3);
             margin-bottom: 1rem;
-            background-color: #3498db;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
+            font-size: 3rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .profile h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .profile p {
             font-size: 1.2rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .university-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 0.9rem;
         }
         
         main {
@@ -96,6 +129,49 @@
             background-color: var(--secondary-color);
         }
         
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-tab.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: #f0f0f0;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .tp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -109,11 +185,28 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #eaeaea;
+            position: relative;
         }
         
         .tp-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tp-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
         
         .tp-content {
@@ -124,11 +217,13 @@
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
+            padding-right: 40px;
         }
         
         .tp-description {
             color: #666;
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
         
         .tp-link {
@@ -140,10 +235,15 @@
             text-decoration: none;
             font-weight: 500;
             transition: background-color 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .tp-link:hover {
             background-color: var(--primary-color);
+        }
+        
+        .tp-link i {
+            margin-right: 5px;
         }
         
         footer {
@@ -167,6 +267,30 @@
             gap: 0.5rem;
         }
         
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary-color);
+        }
+        
         @media (max-width: 768px) {
             .tp-grid {
                 grid-template-columns: 1fr;
@@ -180,6 +304,60 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+            
+            .social-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-tab {
+                width: 80%;
+                text-align: center;
+            }
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin-top: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .subject-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--card-gradient);
+            color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--primary-color);
+        }
+        
+        .back-button i {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -188,90 +366,291 @@
         <div class="container">
             <div class="profile">
                 <div class="profile-img">
-                    VOTRE PHOTO
+                    <i class="fas fa-user-graduate"></i>
                 </div>
-                <h1>Votre Nom Complet</h1>
-                <p>Université [Nom de votre université]</p>
+                <h1>Mohand Mahdi</h1>
+                <p>Étudiant en Génie Électrique</p>
+                <div class="university-badge">
+                    Université de Votre Université
+                </div>
             </div>
         </div>
     </header>
     
     <main>
         <div class="container">
-            <h2 class="section-title">Travaux Pratiques</h2>
+            <h2 class="section-title">Mes Travaux Pratiques</h2>
             
-            <div class="tp-grid">
-                <!-- TP 1 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 1: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du premier travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
+            <div class="nav-tabs">
+                <div class="nav-tab active" data-target="all">Tous les TP</div>
+                <div class="nav-tab" data-target="reseaux">Réseaux électrique</div>
+                <div class="nav-tab" data-target="theorie">Théorie du champs</div>
+                <div class="nav-tab" data-target="electronique">Électronique de puissance</div>
+                <div class="nav-tab" data-target="schemas">Schémas et appareillage</div>
+                <div class="nav-tab" data-target="systeme">Système asservi</div>
+                <div class="nav-tab" data-target="capteur">Capteur</div>
+            </div>
+            
+            <!-- Section Tous les TP -->
+            <div id="all" class="content-section active">
+                <div class="tp-grid">
+                    <!-- TP Réseaux électrique -->
+                    <div class="tp-card" data-subject="reseaux">
+                        <div class="tp-number">1</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="tp-title">Réseaux électrique</h3>
+                            <p class="tp-description">Travaux pratiques sur les réseaux électriques, l'analyse des circuits et la distribution d'énergie.</p>
+                            <a href="#" class="tp-link" data-subject="reseaux"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TP Théorie du champs -->
+                    <div class="tp-card" data-subject="theorie">
+                        <div class="tp-number">2</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-magnet"></i>
+                            </div>
+                            <h3 class="tp-title">Théorie du champs</h3>
+                            <p class="tp-description">Étude des champs électromagnétiques, des ondes et des principes de propagation.</p>
+                            <a href="#" class="tp-link" data-subject="theorie"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TP Électronique de puissance -->
+                    <div class="tp-card" data-subject="electronique">
+                        <div class="tp-number">3</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3 class="tp-title">Électronique de puissance</h3>
+                            <p class="tp-description">Conception et analyse des convertisseurs de puissance et des systèmes électroniques.</p>
+                            <a href="#" class="tp-link" data-subject="electronique"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TP Schémas et appareillage -->
+                    <div class="tp-card" data-subject="schemas">
+                        <div class="tp-number">4</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <h3 class="tp-title">Schémas et appareillage</h3>
+                            <p class="tp-description">Lecture et conception de schémas électriques, étude des appareillages de protection.</p>
+                            <a href="#" class="tp-link" data-subject="schemas"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TP Système asservi -->
+                    <div class="tp-card" data-subject="systeme">
+                        <div class="tp-number">5</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="tp-title">Système asservi</h3>
+                            <p class="tp-description">Analyse et conception des systèmes de régulation et d'asservissement.</p>
+                            <a href="#" class="tp-link" data-subject="systeme"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TP Capteur -->
+                    <div class="tp-card" data-subject="capteur">
+                        <div class="tp-number">6</div>
+                        <div class="tp-content">
+                            <div class="subject-icon">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <h3 class="tp-title">Capteur</h3>
+                            <p class="tp-description">Étude des capteurs, de leurs caractéristiques et de leurs applications.</p>
+                            <a href="#" class="tp-link" data-subject="capteur"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- TP 2 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 2: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du deuxième travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
+            </div>
+            
+            <!-- Sections individuelles pour chaque matière -->
+            <div id="reseaux" class="content-section">
+                <a href="#" class="back-button"><i class="fas fa-arrow-left"></i> Retour à tous les TP</a>
+                <div class="subject-header">
+                    <h2>Réseaux électrique</h2>
+                    <p>Travaux pratiques sur les réseaux électriques</p>
+                </div>
+                <div class="tp-grid">
+                    <div class="tp-card">
+                        <div class="tp-number">1</div>
+                        <div class="tp-content">
+                            <h3 class="tp-title">TP 1: Analyse des circuits triphasés</h3>
+                            <p class="tp-description">Étude des systèmes triphasés équilibrés et déséquilibrés, mesure des tensions et courants.</p>
+                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
+                        </div>
+                    </div>
+                    <div class="tp-card">
+                        <div class="tp-number">2</div>
+                        <div class="tp-content">
+                            <h3 class="tp-title">TP 2: Protection des réseaux</h3>
+                            <p class="tp-description">Étude des dispositifs de protection : disjoncteurs, relais et fusibles.</p>
+                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
+                        </div>
+                    </div>
+                    <div class="tp-card">
+                        <div class="tp-number">3</div>
+                        <div class="tp-content">
+                            <h3 class="tp-title">TP 3: Qualité de l'énergie</h3>
+                            <p class="tp-description">Analyse des harmoniques, facteur de puissance et compensation d'énergie réactive.</p>
+                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- TP 3 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 3: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du troisième travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
+            </div>
+            
+            <div id="theorie" class="content-section">
+                <a href="#" class="back-button"><i class="fas fa-arrow-left"></i> Retour à tous les TP</a>
+                <div class="subject-header">
+                    <h2>Théorie du champs</h2>
+                    <p>Étude des champs électromagnétiques</p>
+                </div>
+                <div class="tp-grid">
+                    <div class="tp-card">
+                        <div class="tp-number">1</div>
+                        <div class="tp-content">
+                            <h3 class="tp-title">TP 1: Champ électrostatique</h3>
+                            <p class="tp-description">Étude du champ électrique créé par différentes distributions de charges.</p>
+                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
+                        </div>
+                    </div>
+                    <div class="tp-card">
+                        <div class="tp-number">2</div>
+                        <div class="tp-content">
+                            <h3 class="tp-title">TP 2: Champ magnétostatique</h3>
+                            <p class="tp-description">Analyse du champ magnétique produit par des courants électriques.</p>
+                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- TP 4 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 4: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du quatrième travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
-                    </div>
-                </div>
-                
-                <!-- TP 5 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 5: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du cinquième travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
-                    </div>
-                </div>
-                
-                <!-- TP 6 -->
-                <div class="tp-card">
-                    <div class="tp-content">
-                        <h3 class="tp-title">TP 6: Titre du Travail Pratique</h3>
-                        <p class="tp-description">Description brève du sixième travail pratique. Objectifs et compétences développées.</p>
-                        <a href="#" class="tp-link">Voir le TP</a>
-                    </div>
-                </div>
+            </div>
+            
+            <!-- Sections pour les autres matières (structure similaire) -->
+            
+            <div class="last-updated">
+                Dernière mise à jour: <span id="current-date"></span>
             </div>
         </div>
     </main>
     
     <footer>
         <div class="container">
-            <p>&copy; 2023 Votre Nom. Tous droits réservés.</p>
+            <p>&copy; 2023 Mohand Mahdi. Tous droits réservés.</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📧</span>
-                    <span>votre.email@universite.fr</span>
+                    <i class="fas fa-envelope"></i>
+                    <span>mohand.mahdi@universite.fr</span>
                 </div>
                 <div class="contact-item">
-                    <span>📱</span>
+                    <i class="fas fa-phone"></i>
                     <span>+33 X XX XX XX XX</span>
                 </div>
             </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // إضافة التاريخ الحالي تلقائياً
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('fr-FR');
+        
+        // التنقل بين التبويبات
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // إزالة النشاط من جميع التبويبات
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // إضافة النشاط للتبويب المحدد
+                tab.classList.add('active');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار القسم المحدد
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // التنقل إلى صفحة المادة عند النقر على رابط "Voir les TP"
+        document.querySelectorAll('.tp-link[data-subject]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const subject = link.getAttribute('data-subject');
+                
+                // إزالة النشاط من جميع التبويبات
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // إضافة النشاط للتبويب المناسب
+                document.querySelector(`.nav-tab[data-target="${subject}"]`).classList.add('active');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار قسم المادة المحددة
+                document.getElementById(subject).classList.add('active');
+                
+                // التمرير إلى الأعلى
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // زر الرجوع
+        document.querySelectorAll('.back-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // إزالة النشاط من جميع التبويبات
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // إضافة النشاط لتبويب "Tous les TP"
+                document.querySelector('.nav-tab[data-target="all"]').classList.add('active');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار قسم "Tous les TP"
+                document.getElementById('all').classList.add('active');
+            });
+        });
+        
+        // تأثيرات بسيطة عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.tp-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
