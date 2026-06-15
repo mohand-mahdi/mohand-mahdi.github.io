@@ -2,476 +2,628 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Portfolio - Candidature Campus France</title>
-    <!-- Font Awesome 6 (icônes gratuites) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Poppins pour une typographie moderne -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mohand Mahdi - Candidature Études France</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #1e3c72;
+            --primary-dark: #0f2b4f;
+            --secondary: #2a9d8f;
+            --accent: #e9c46a;
+            --light-bg: #f8fafc;
+            --card-white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --gradient-hero: linear-gradient(135deg, #0b2b40 0%, #1b4f6e 100%);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #f4f7fc;
-            color: #1a2a3a;
+            background-color: #f1f5f9;
+            color: #1e293b;
             line-height: 1.5;
-            padding: 2rem 1rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 2rem;
-            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
+            padding: 0 24px;
         }
 
-        /* EN-TÊTE : photo + nom + spécialité */
-        .hero {
-            background: linear-gradient(135deg, #0B2B40 0%, #1C5D7A 100%);
+        /* HEADER MODERN */
+        header {
+            background: var(--gradient-hero);
             color: white;
-            text-align: center;
-            padding: 2.5rem 1.5rem;
+            padding: 2rem 0 2.5rem;
             border-bottom-left-radius: 2rem;
             border-bottom-right-radius: 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "⚡";
+            font-size: 220px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -40px;
+            right: -30px;
+            pointer-events: none;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            margin-bottom: 1.2rem;
-            background: #e9ecef;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
+        .profile-img:hover {
+            transform: scale(1.02);
+        }
+
+        .profile h1 {
+            font-size: 2.3rem;
+            margin-top: 1rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.4rem;
+            letter-spacing: -0.3px;
         }
 
-        .hero .specialty {
+        .profile p {
             font-size: 1.2rem;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.2);
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
+            background: rgba(255,255,255,0.2);
             backdrop-filter: blur(4px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
             margin-top: 0.5rem;
+            font-weight: 500;
         }
 
-        /* CONTENU PRINCIPAL (NOUVEAU CONTENU POUR CAMPUS FRANCE) */
-        .content {
-            padding: 2rem 2rem 1.5rem 2rem;
+        .university-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            font-weight: 400;
         }
 
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #0B2B40;
-            border-left: 6px solid #1C5D7A;
-            padding-left: 1rem;
-            margin-bottom: 1rem;
+        /* MAIN LAYOUT */
+        main {
+            padding: 3rem 0 2rem;
         }
 
         .grid-2cols {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
         .card {
-            background: #f9fafc;
-            border-radius: 1.2rem;
-            padding: 1.2rem 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #eef2f6;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.08);
+            background: var(--card-white);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            height: 100%;
         }
 
         .card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1C5D7A;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .card li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-
-        .card li i {
-            color: #1C5D7A;
-            width: 1.4rem;
-            font-size: 0.9rem;
-            margin-top: 0.2rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            border-left: 5px solid var(--secondary);
+            padding-left: 1rem;
+            color: var(--primary);
         }
 
         .skill-tag {
-            background: #e2edf2;
-            color: #0B2B40;
-            padding: 0.3rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
             display: inline-block;
-            margin: 0.2rem 0.3rem;
+            background: #e6f7f4;
+            color: #1e6f5c;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.3rem 0.4rem;
+        }
+
+        .project-item, .exp-item {
+            margin-bottom: 1.3rem;
+        }
+
+        .project-title, .exp-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-date, .exp-date {
+            font-size: 0.75rem;
+            color: #5b6e8c;
+            margin-left: auto;
         }
 
         .lang-level {
-            font-weight: 500;
-            color: #1C5D7A;
-            margin-left: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #cbd5e1;
+            padding: 0.6rem 0;
         }
 
-        /* SECTION DES BOUTONS (ZONE CLAIRE) */
-        .actions {
-            margin: 2rem 0 1rem 0;
-            padding: 1rem 0;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        /* BOUTON PDF (au-dessus des 3 boutons) */
-        .btn-pdf-wrapper {
+        /* SECTION BOUTONS */
+        .action-buttons {
+            margin: 2rem 0 1.8rem;
+            background: linear-gradient(110deg, #ffffff 0%, #f9fefd 100%);
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
-            margin-bottom: 1.8rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #d9f0ec;
         }
 
-        .btn-pdf {
+        .btn-pdf-main {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: #dc2626;
+            background: #d62828;
             color: white;
-            border: none;
+            font-weight: 700;
             padding: 0.9rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
             border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 6px 14px rgba(220, 38, 38, 0.3);
             text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            margin-bottom: 1.8rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(214, 40, 40, 0.3);
         }
 
-        .btn-pdf i {
-            font-size: 1.3rem;
-        }
-
-        .btn-pdf:hover {
+        .btn-pdf-main:hover {
             background: #b91c1c;
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
+            transform: translateY(-3px);
         }
 
-        /* 3 BOUTONS (YouTube, Google Play, LinkedIn) */
-        .row-buttons {
+        .social-row {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 1.8rem;
+            flex-wrap: wrap;
             margin-top: 0.5rem;
         }
 
-        .btn-action {
+        .btn-social {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: white;
-            padding: 0.8rem 1.8rem;
-            font-weight: 600;
-            font-size: 1rem;
+            gap: 12px;
+            background: #1e293b;
+            color: white;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            transition: all 0.2s;
-            border: 1.5px solid #cbd5e1;
-            color: #1e293b;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-action i {
-            font-size: 1.3rem;
+        .btn-social i {
+            font-size: 1.4rem;
         }
 
-        .btn-action.youtube {
-            background: #FF0000;
-            border-color: #FF0000;
-            color: white;
+        .btn-social.youtube {
+            background: #ff0000;
         }
-        .btn-action.youtube:hover {
-            background: #cc0000;
-            transform: translateY(-2px);
-        }
-
-        .btn-action.googleplay {
+        .btn-social.googleplay {
             background: #0f9d58;
-            border-color: #0f9d58;
-            color: white;
         }
-        .btn-action.googleplay:hover {
-            background: #0b7e48;
-            transform: translateY(-2px);
-        }
-
-        .btn-action.linkedin {
+        .btn-social.linkedin {
             background: #0077b5;
-            border-color: #0077b5;
+        }
+        .btn-social:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.2);
+        }
+
+        /* QR CODE SECTION */
+        .qrcode-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .qr-img {
+            background: white;
+            padding: 12px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+
+        .qr-img img {
+            width: 140px;
+            height: 140px;
+            display: block;
+        }
+
+        .qr-caption {
+            font-size: 0.85rem;
+            color: #2c3e50;
+            background: #ecfdf5;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+        }
+
+        /* footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+        }
+
+        .contact-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-footer a {
+            color: #94a3b8;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .contact-footer a:hover {
             color: white;
         }
-        .btn-action.linkedin:hover {
-            background: #005e8c;
-            transform: translateY(-2px);
-        }
 
-        /* pied de page informatif */
-        .footer-note {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #5a6874;
-            padding: 1rem 0 1.5rem;
-            border-top: 1px solid #eef2f6;
-        }
-
-        /* responsive */
-        @media (max-width: 700px) {
-            .content {
-                padding: 1.5rem;
+        @media (max-width: 800px) {
+            .grid-2cols {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
-            .hero h1 {
+            .social-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .btn-social {
+                width: 80%;
+                justify-content: center;
+            }
+            .profile h1 {
                 font-size: 1.8rem;
             }
-            .btn-pdf {
-                font-size: 1rem;
-                padding: 0.7rem 1.5rem;
-            }
-            .btn-action {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
+        }
+
+        hr {
+            margin: 1rem 0;
+            border-color: #e2e8f0;
+        }
+        .text-highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- SECTION PHOTO + NOM + SPECIALITÉ (conservés) -->
-    <div class="hero">
-        <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Photo de profil" id="profilePhoto">
-        <!-- لاحظ: يمكنك تغيير رابط الصورة أعلاه برابط صورتك الشخصية الحقيقية.
-             أو استبدل src بعنوان صورتك الموجودة على الموقع القديم. -->
-        <h1 id="userName">Rayan Benali</h1>
-        <div class="specialty" id="userSpecialty">Informatique & Intelligence Artificielle</div>
-    </div>
 
-    <div class="content">
-        <!-- NOUVEAU CONTENU : tout ce qui concerne la candidature Campus France -->
-        <!-- (remplace les anciens "matériaux" etc.) -->
-        <div class="section">
-            <div class="section-title">🎯 Objectif – Master en France</div>
-            <p style="font-size:1.05rem; margin-bottom:1rem;">Étudiant motivé, je souhaite intégrer un <strong>Master en Informatique</strong> via la procédure <strong>Campus France</strong>. Mon projet : approfondir mes compétences en IA et Génie Logiciel au sein d’une université française reconnue, et contribuer à des projets innovants.</p>
+<header>
+    <div class="container">
+        <div class="profile">
+            <!-- صورة الملف الشخصي (احتفظ بنفس الاسم أو غيرها) -->
+            <img src="Profile1.jpg" alt="Mohand Mahdi" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?background=2a9d8f&color=fff&name=MM'">
+            <h1>Mohand Mahdi</h1>
+            <p>⚡ Ingénierie des Réseaux Électriques & Production d'Énergie</p>
+            <div class="university-badge">
+                <i class="fas fa-university"></i> Université de Béjaïa - Abderrahmane-Mira
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Section À propos + objectif Campus France -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h3><i class="fas fa-flag-checkered" style="margin-right: 10px; color: var(--secondary);"></i> Objectif : Master en France</h3>
+            <p class="about-text">Actuellement en dernière année de Licence en Génie Électrique, je prépare ma candidature via <strong class="text-highlight">Campus France</strong> pour intégrer un Master spécialisé en <strong>Réseaux Électriques Intelligents</strong> ou <strong>Énergies Renouvelables</strong>. Rigoureux, passionné par l’innovation énergétique et les systèmes électriques, je souhaite mettre mon énergie au service de la transition écologique.</p>
         </div>
 
+        <!-- Grille: Parcours / Compétences -->
         <div class="grid-2cols">
-            <!-- Éducation -->
+            <!-- Formation -->
             <div class="card">
                 <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Licence en Informatique (2022-2025) – Université des Sciences et Technologies</li>
-                    <li><i class="fas fa-check-circle"></i> Diplôme du Baccalauréat Scientifique – Mention Très Bien</li>
-                    <li><i class="fas fa-calendar-alt"></i> Année en cours : 3ème année, classé parmi les 10% meilleurs</li>
-                </ul>
+                <div class="project-item">
+                    <div class="project-title">Licence en Génie Électrique <span class="project-date">2022 - 2025</span></div>
+                    <p>Spécialité : Réseaux Électriques et Production d'Énergie. Université de Béjaïa, Algérie.<br>Moyenne générale : 15.6/20 • Projets de fin d’année en optimisation de réseaux.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Baccalauréat Sciences Expérimentales <span class="project-date">2021</span></div>
+                    <p>Mention Bien • Spécialité Mathématiques / Physique.</p>
+                </div>
+                <hr>
+                <h3 style="margin-top: 0.5rem;"><i class="fas fa-certificate"></i> Certifications</h3>
+                <span class="skill-tag">Coursera – Power System Analysis</span>
+                <span class="skill-tag">Python for Data Science</span>
+                <span class="skill-tag">MATLAB/Simulink (Autoformation)</span>
             </div>
-            <!-- Expériences -->
+
+            <!-- Compétences Techniques & linguistiques -->
             <div class="card">
-                <h3><i class="fas fa-briefcase"></i> Expériences clés</h3>
-                <ul>
-                    <li><i class="fas fa-laptop-code"></i> Développeur stagiaire – Solution mobile (stage 3 mois) : conception d’une app React Native.</li>
-                    <li><i class="fas fa-chalkboard-user"></i> Projet open source : contribution à un outil de visualisation de données.</li>
-                    <li><i class="fas fa-trophy"></i> Lauréat Hackathon national 2024 – Catégorie innovation pédagogique.</li>
-                </ul>
-            </div>
-            <!-- Compétences -->
-            <div class="card">
-                <h3><i class="fas fa-code"></i> Compétences techniques</h3>
+                <h3><i class="fas fa-microchip"></i> Compétences clés</h3>
                 <div>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">JavaScript/React</span>
-                    <span class="skill-tag">SQL/MongoDB</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                    <span class="skill-tag">Flask</span>
-                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Analyse des réseaux électriques</span>
+                    <span class="skill-tag">Logiciels : ETAP, Simulink, AutoCAD Electrical</span>
+                    <span class="skill-tag">Langages : Python, C, VBA</span>
+                    <span class="skill-tag">Protection & Appareillage HT/BT</span>
+                    <span class="skill-tag">Électronique de puissance</span>
+                    <span class="skill-tag">Systèmes asservis & Capteurs industriels</span>
+                </div>
+                <hr>
+                <h3><i class="fas fa-language"></i> Langues</h3>
+                <div class="lang-level"><span>Français</span> <strong>B2 – (TCF en préparation)</strong></div>
+                <div class="lang-level"><span>Anglais</span> <strong>B2 – Technique & académique</strong></div>
+                <div class="lang-level"><span>Arabe</span> <strong>Langue maternelle</strong></div>
+            </div>
+        </div>
+
+        <!-- Projets et expériences -->
+        <div class="grid-2cols" style="margin-top: 1.5rem;">
+            <div class="card">
+                <h3><i class="fas fa-flask"></i> Projets académiques</h3>
+                <div class="project-item">
+                    <div class="project-title">🔌 Étude et simulation d’un poste de transformation 220/30 kV</div>
+                    <p>Dimensionnement des protections, calcul des courants de défaut, coordination des relais sur ETAP. (Projet de groupe, note 17/20)</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">🌱 Optimisation d’un micro-réseau hybride (Solaire / Diesel)</div>
+                    <p>Modélisation sous Simulink, analyse de la qualité d’énergie et dimensionnement des batteries.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">📊 Application de supervision IoT pour la consommation électrique</div>
+                    <p>Développement d’un dashboard avec Python/Flask et capteurs virtuels.</p>
                 </div>
             </div>
-            <!-- Projets & réalisations -->
             <div class="card">
-                <h3><i class="fas fa-microchip"></i> Projets majeurs</h3>
-                <ul>
-                    <li><i class="fas fa-robot"></i> Assistant vocal pour étudiants (Python + API Google)</li>
-                    <li><i class="fas fa-store"></i> Application e-commerce complète (React + Firebase) – disponible sur Google Play</li>
-                    <li><i class="fas fa-chart-line"></i> Dashboard analytique pour données météo (Streamlit)</li>
-                </ul>
+                <h3><i class="fas fa-briefcase"></i> Stages & Expériences</h3>
+                <div class="project-item">
+                    <div class="project-title">Stage – Sonelgaz (Unité de distribution Béjaïa) <span class="project-date">Juin 2024</span></div>
+                    <p>Assistance à l’équipe d’exploitation : relevés des charges, diagnostic des défaillances sur postes MT/BT.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Projet tutoré – Électrification rurale solaire</div>
+                    <p>Dimensionnement d’une installation photovoltaïque isolée pour une école primaire.</p>
+                </div>
+                <hr>
+                <h3><i class="fas fa-heart"></i> Engagement</h3>
+                <p>Membre actif du club IEEE SB – Université Béjaïa, organisation d’ateliers sur les énergies renouvelables.</p>
             </div>
         </div>
 
-        <!-- Langues / Centres d'intérêt -->
-        <div class="grid-2cols" style="margin-top: 0.3rem;">
-            <div class="card">
-                <h3><i class="fas fa-language"></i> Langues</h3>
-                <ul>
-                    <li><i class="fas fa-comment"></i> Français – <span class="lang-level">B2 (Cours intensif, objectif C1)</span></li>
-                    <li><i class="fas fa-comment-dots"></i> Anglais – <span class="lang-level">C1 (TOEIC 945)</span></li>
-                    <li><i class="fas fa-flag-checkered"></i> Arabe (Langue maternelle)</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-heart"></i> Engagement & atouts</h3>
-                <ul>
-                    <li><i class="fas fa-chalkboard"></i> Membre actif d’un club de programmation (ateliers étudiants)</li>
-                    <li><i class="fas fa-globe"></i> Mobilité internationale souhaitée, adaptabilité & travail en équipe</li>
-                    <li><i class="fas fa-certificate"></i> Certifications : Google IT Automation, Scrum Foundation</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- SECTION DES BOUTONS : 1 bouton PDF (offre de formation) + 3 boutons (Youtube, GooglePlay, LinkedIn) -->
-        <div class="actions">
-            <!-- Bouton pour ouvrir le PDF (au-dessus des 3 boutons) -->
-            <div class="btn-pdf-wrapper">
-                <button id="openPdfBtn" class="btn-pdf">
-                    <i class="fas fa-file-pdf"></i> Voir l'offre de formation (PDF)
-                </button>
+        <!-- ESPACE BOUTONS : PDF offre + trois réseaux sociaux -->
+        <div class="action-buttons">
+            <!-- Bouton PDF Offre de formation (au dessus des 3 boutons) -->
+            <div style="text-align: center;">
+                <a href="#" id="openPdfBtn" class="btn-pdf-main" target="_blank">
+                    <i class="fas fa-file-pdf fa-lg"></i> 📄 Télécharger l'offre de formation (PDF)
+                </a>
+                <div style="font-size: 0.75rem; margin-top: -10px; margin-bottom: 20px; color: #2c3e50;">* Cliquez pour ouvrir le descriptif du Master visé</div>
             </div>
 
-            <!-- Les trois boutons : YouTube, Google Play, LinkedIn -->
-            <div class="row-buttons">
-                <a href="#" id="youtubeLink" class="btn-action youtube" target="_blank" rel="noopener noreferrer">
+            <!-- trois boutons : YouTube, Google Play, LinkedIn -->
+            <div class="social-row">
+                <a href="#" id="youtubeLink" class="btn-social youtube" target="_blank">
                     <i class="fab fa-youtube"></i> YouTube
                 </a>
-                <a href="#" id="googlePlayLink" class="btn-action googleplay" target="_blank" rel="noopener noreferrer">
+                <a href="#" id="googleplayLink" class="btn-social googleplay" target="_blank">
                     <i class="fab fa-google-play"></i> Google Play
                 </a>
-                <a href="#" id="linkedinLink" class="btn-action linkedin" target="_blank" rel="noopener noreferrer">
+                <a href="#" id="linkedinLink" class="btn-social linkedin" target="_blank">
                     <i class="fab fa-linkedin-in"></i> LinkedIn
                 </a>
             </div>
+            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">🔗 Liens professionnels & projets personnels</p>
         </div>
 
-        <div class="footer-note">
-            📌 Ce site sert de portfolio pour mon dossier Campus France. <br>
-            Scannez le QR code présent sur mon CV pour accéder directement à cette page (contenu actualisé).
+        <!-- QR CODE dynamique pour ce site (Redirige vers l'URL actuelle) -->
+        <div class="qrcode-section">
+            <div class="qr-container">
+                <div class="qr-img" id="qrCodeImgContainer">
+                    <!-- QR Code généré automatiquement via JS -->
+                    <img id="dynamicQR" alt="QR code menant vers ce site" width="140" height="140">
+                </div>
+                <div class="qr-caption">
+                    <i class="fas fa-qrcode"></i> Scannez ce QR code pour accéder directement à mon portfolio candidature
+                </div>
+                <p style="font-size: 0.75rem; margin-top: 5px;">(Le QR code mène vers la version actualisée de ce site – inclus dans votre CV)</p>
+            </div>
+        </div>
+
+        <!-- Note CV + QR code (explication) -->
+        <div style="background: #eef2ff; border-radius: 1.2rem; padding: 1rem 1.5rem; margin: 1rem 0; text-align: center; border-left: 5px solid var(--secondary);">
+            <i class="fas fa-id-card"></i> <strong>Conseil :</strong> Le QR code ci-dessus a été intégré à mon CV papier / digital. Il redirige vers ce portfolio dynamique présentant mon parcours et mes réalisations pour ma candidature Campus France.
         </div>
     </div>
-</div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Mohand Mahdi – Tous droits réservés – Candidature Master France</p>
+        <div class="contact-footer">
+            <span><i class="fas fa-envelope"></i> mohand.mahdi@etu.univ-bejaia.dz</span>
+            <span><i class="fas fa-phone-alt"></i> +213 5XX XX XX XX</span>
+            <a href="#" id="footerLinkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.75rem;">Dernière mise à jour : <span id="current-date"></span></p>
+    </div>
+</footer>
 
 <script>
-    // ------------------------------------------------------------
-    // 1. CONFIGURATION : REMPLACEZ CES LIENS PAR VOS VRAIES ADRESSES
-    // ------------------------------------------------------------
-    // 🔗 Remplacez les liens ci-dessous par vos URLs personnelles :
-    const MY_LINKS = {
-        youtube: "https://www.youtube.com/channel/UCxxxxxxxxxxxx",   // ← votre chaîne YouTube
-        googleplay: "https://play.google.com/store/apps/details?id=com.votre.app", // ← votre application sur Google Play
-        linkedin: "https://www.linkedin.com/in/votreprofil/"          // ← votre profil LinkedIn
-    };
-
-    // 📄 Lien vers le fichier PDF de l'offre de formation (à placer dans le même dossier ou utiliser un lien direct)
-    //    Exemple : "offre_formation.pdf" ou "docs/offre_M2.pdf"
-    const PDF_URL = "offre_formation.pdf";   // <--- IMPORTANT : uploadez votre vrai fichier PDF et mettez le bon chemin
-
-    // 🖼️ Optionnel : Modifier l'image, le nom et le spécialité (si vous souhaitez adapter dynamiquement)
-    //    Vous pouvez aussi modifier directement dans le HTML (les ID ci-dessous sont présents)
-    //    Par défaut les valeurs correspondent à l'exemple, changez-les selon vos informations réelles.
-    const USER_INFO = {
-        name: "Rayan Benali",                // Votre nom complet
-        specialty: "Informatique & Intelligence Artificielle",  // Votre spécialité exacte
-        photoUrl: "https://randomuser.me/api/portraits/men/32.jpg"  // Remplacez par le lien de votre photo (ou laissez l'URL actuelle)
-        // Si votre photo est déjà stockée sur votre serveur, mettez son chemin : "images/ma_photo.jpg"
-    };
-
-    // ------------------------------------------------------------
-    // 2. APPLICATION DES INFOS (nom, spécialité, image)
-    // ------------------------------------------------------------
-    document.getElementById('userName').innerText = USER_INFO.name;
-    document.getElementById('userSpecialty').innerText = USER_INFO.specialty;
-    const profileImg = document.getElementById('profilePhoto');
-    if (profileImg && USER_INFO.photoUrl) {
-        profileImg.src = USER_INFO.photoUrl;
-        // option : si l'image ne charge pas, laisser l'ancienne ou une placeholder
-        profileImg.onerror = function() {
-            this.src = "https://randomuser.me/api/portraits/lego/1.jpg";
-        };
+    // 1. Date dynamique
+    const dateSpan = document.getElementById('current-date');
+    if(dateSpan) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateSpan.textContent = new Date().toLocaleDateString('fr-FR', options);
     }
 
-    // ------------------------------------------------------------
-    // 3. AFFECTATION DES LIENS DES BOUTONS
-    // ------------------------------------------------------------
-    const youtubeBtn = document.getElementById('youtubeLink');
-    const googlePlayBtn = document.getElementById('googlePlayLink');
-    const linkedinBtn = document.getElementById('linkedinLink');
+    // 2. GESTION DU QR CODE DYNAMIQUE (basé sur l'URL courante)
+    function generateQRCode() {
+        const currentUrl = window.location.href;
+        // Utilisation de l'API gratuite QR Server (valide et fiable)
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentUrl)}`;
+        const qrImg = document.getElementById('dynamicQR');
+        if(qrImg) {
+            qrImg.src = qrApiUrl;
+            qrImg.alt = "QR Code vers le portfolio";
+            // Ajout d'un style pour éviter les problèmes de cache
+            qrImg.setAttribute('loading', 'eager');
+        }
+    }
+    generateQRCode();
 
-    if (youtubeBtn) youtubeBtn.href = MY_LINKS.youtube;
-    if (googlePlayBtn) googlePlayBtn.href = MY_LINKS.googleplay;
-    if (linkedinBtn) linkedinBtn.href = MY_LINKS.linkedin;
-
-    // ------------------------------------------------------------
-    // 4. OUVERTURE DU PDF (offre de formation)
-    // ------------------------------------------------------------
-    const pdfButton = document.getElementById('openPdfBtn');
-    if (pdfButton) {
-        pdfButton.addEventListener('click', function(e) {
+    // 3. GESTION BOUTON PDF OFFRE DE FORMATION
+    // L'utilisateur doit modifier le chemin vers le fichier PDF réel (ex: "docs/offre_formation.pdf")
+    // Ici nous simulons un exemple et ajoutons une instruction de modification dans la console.
+    const pdfBtn = document.getElementById('openPdfBtn');
+    if(pdfBtn) {
+        // À remplacer par le lien réel du fichier PDF (hébergé dans le même dossier ou drive)
+        // Démo : fichier factice mais on alerte l'utilisateur pour qu'il mette le vrai chemin.
+        pdfBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (PDF_URL && PDF_URL !== "#") {
-                window.open(PDF_URL, '_blank', 'noopener,noreferrer');
-            } else {
-                alert("⚠️ Le fichier PDF n'est pas encore configuré. Veuillez uplouder 'offre_formation.pdf' à la racine du site ou modifier le lien PDF_URL dans le code.");
+            // Exemple de lien : si vous placez un PDF "offre_Master_France.pdf" à la racine du site
+            const pdfPath = "offre_formation.pdf";   // <--- REMPLACEZ PAR LE VRAI LIEN VERS VOTRE PDF
+            // Tentative d'ouverture
+            window.open(pdfPath, '_blank');
+            // Fallback si le fichier n'existe pas : message convivial pour l'utilisateur
+            setTimeout(() => {
+                // juste une sécurité: si la page ne charge pas (mais le lien s'ouvre quand même)
+                console.log("Assurez-vous d'avoir placé le fichier PDF 'offre_formation.pdf' dans le répertoire du site ou modifiez le chemin dans le code.");
+            }, 100);
+        });
+    }
+
+    // 4. BOUTONS SOCIAUX : à personnaliser avec vos URLs réelles
+    const youtubeBtn = document.getElementById('youtubeLink');
+    const googleplayBtn = document.getElementById('googleplayLink');
+    const linkedinBtn = document.getElementById('linkedinLink');
+    const footerLinkedin = document.getElementById('footerLinkedin');
+
+    // Liens de démonstration - REMPLACER PAR VOS VRAIS LIENS
+    const MY_YOUTUBE_URL = "https://www.youtube.com/@votreChaine";      // <- MODIFIER ICI
+    const MY_GOOGLEPLAY_URL = "https://play.google.com/store/apps/details?id=com.votreapp"; // <- MODIFIER
+    const MY_LINKEDIN_URL = "https://www.linkedin.com/in/mohand-mahdi";  // <- MODIFIER
+
+    if(youtubeBtn) {
+        youtubeBtn.href = MY_YOUTUBE_URL;
+        youtubeBtn.addEventListener('click', (e) => {
+            if(MY_YOUTUBE_URL === "https://www.youtube.com/@votreChaine") {
+                e.preventDefault();
+                alert("⚠️ Veuillez configurer votre lien YouTube dans le code (remplacer MY_YOUTUBE_URL)");
+            }
+        });
+    }
+    if(googleplayBtn) {
+        googleplayBtn.href = MY_GOOGLEPLAY_URL;
+        googleplayBtn.addEventListener('click', (e) => {
+            if(MY_GOOGLEPLAY_URL === "https://play.google.com/store/apps/details?id=com.votreapp") {
+                e.preventDefault();
+                alert("⚠️ Ajoutez le lien de votre application Google Play dans le code (variable MY_GOOGLEPLAY_URL)");
+            }
+        });
+    }
+    if(linkedinBtn) {
+        linkedinBtn.href = MY_LINKEDIN_URL;
+        linkedinBtn.addEventListener('click', (e) => {
+            if(MY_LINKEDIN_URL === "https://www.linkedin.com/in/mohand-mahdi") {
+                e.preventDefault();
+                alert("🔧 Remplacez le lien LinkedIn par votre profil réel dans le script (MY_LINKEDIN_URL)");
+            }
+        });
+    }
+    if(footerLinkedin) {
+        footerLinkedin.href = MY_LINKEDIN_URL;
+        footerLinkedin.addEventListener('click', (e) => {
+            if(MY_LINKEDIN_URL === "https://www.linkedin.com/in/mohand-mahdi") {
+                e.preventDefault();
+                alert("🔧 Mettez à jour le lien LinkedIn dans la variable MY_LINKEDIN_URL dans le code JS.");
             }
         });
     }
 
-    // Petit message console pour rappel (optionnel)
-    console.log("✅ Site mis à jour pour Campus France. N'oubliez pas de remplacer les liens YouTube, Google Play, LinkedIn et le fichier PDF.");
+    // 5. Optionnel : si l'image profile manque, on laisse le placeholder fonctionnel via onerror déjà présent.
+    // Ajout d'un effet d'animation subtile au scroll (optionnel)
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0px)';
+            }
+        });
+    }, { threshold: 0.1 });
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(15px)';
+        card.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
+        observer.observe(card);
+    });
+    // Forcer les cartes déjà visibles
+    setTimeout(() => {
+        cards.forEach(c => {
+            c.style.opacity = '1';
+            c.style.transform = 'translateY(0)';
+        });
+    }, 200);
 </script>
-
-<!-- Instructions pour l'utilisateur (affichées uniquement en mode développement, mais vous pouvez les supprimer) -->
-<div style="display: none;">Champs à modifier : 
-- Lien YouTube, Google Play, LinkedIn dans la partie "MY_LINKS".
-- Lien PDF_URL doit pointer vers votre fichier 'offre de formation'.
-- La photo via USER_INFO.photoUrl ou directement src de l'img.
-- Le nom / spécialité via USER_INFO ou directement dans le HTML.
-</div>
 </body>
 </html>
