@@ -1,645 +1,473 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Universitaire - Travaux Pratiques</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>محفظتي الدراسية - التقديم إلى فرنسا عبر Campus France</title>
+    <!-- Google Fonts + Font Awesome 6 (CDN) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #2c3e50, #3498db);
-            --card-gradient: linear-gradient(135deg, #3498db, #2c3e50);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f7 100%);
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: var(--gradient);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-        }
-        
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        
-        .profile h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .profile p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .university-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        
-        main {
-            padding: 3rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-size: 2rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--secondary-color);
-        }
-        
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .nav-tab {
-            padding: 10px 20px;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 30px;
-            cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 500;
-            box-shadow: var(--shadow);
         }
-        
-        .nav-tab.active {
-            background: var(--secondary-color);
+
+        /* Hero / header */
+        .profile-header {
+            background: linear-gradient(135deg, #0b2b40 0%, #1a4a62 100%);
+            padding: 2rem 2.5rem;
             color: white;
-            border-color: var(--secondary-color);
+            text-align: center;
         }
-        
-        .nav-tab:hover:not(.active) {
-            background: #f0f0f0;
-        }
-        
-        .content-section {
-            display: none;
-        }
-        
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .tp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .tp-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #eaeaea;
-            position: relative;
-        }
-        
-        .tp-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .tp-number {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--secondary-color);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
-        .tp-content {
-            padding: 1.5rem;
-        }
-        
-        .tp-title {
-            font-size: 1.3rem;
+
+        .profile-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            padding-right: 40px;
+            letter-spacing: -0.5px;
         }
-        
-        .tp-description {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+
+        .profile-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
         }
-        
-        .tp-link {
+
+        .campus-badge {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .tp-link:hover {
-            background-color: var(--primary-color);
-        }
-        
-        .tp-link i {
-            margin-right: 5px;
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 0.3rem 1.2rem;
             margin-top: 1rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--secondary-color);
-        }
-        
-        @media (max-width: 768px) {
-            .tp-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .social-links {
-                gap: 0.5rem;
-            }
-            
-            .nav-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-tab {
-                width: 80%;
-                text-align: center;
-            }
-            
-            .university-logo {
-                position: static;
-                margin: 0 auto 1rem;
-                width: 60px;
-                height: 60px;
-            }
-        }
-        
-        .last-updated {
-            text-align: center;
-            margin-top: 2rem;
-            color: #888;
-            font-size: 0.9rem;
-        }
-        
-        .subject-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-        
-        .subject-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--card-gradient);
-            color: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-        
-        .back-button {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
-        
-        .back-button:hover {
-            color: var(--primary-color);
+
+        /* المحتوى الجديد (الوصف الشخصي، المؤهلات، الدوافع) */
+        .main-content {
+            padding: 2.2rem 2.5rem;
         }
-        
-        .back-button i {
-            margin-right: 5px;
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, #1a4a62, #2c7da0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            border-right: 4px solid #2c7da0;
+            padding-right: 1rem;
+        }
+
+        .intro-text {
+            background: #f0f6fa;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 6px solid #2c7da0;
+            font-size: 1.05rem;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2edf2;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde6;
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: #1a4a62;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .info-card p, .info-card ul {
+            font-size: 0.95rem;
+            color: #2c3e4e;
+        }
+
+        .info-card ul {
+            padding-right: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .info-card li {
+            margin: 0.3rem 0;
+        }
+
+        /* منطقة الأزرار الرئيسية */
+        .actions-area {
+            margin: 2rem 0 1.5rem 0;
+            text-align: center;
+        }
+
+        /* زر PDF الخاص بـ offre de formation */
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #d32f2f;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.25s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(211, 47, 47, 0.25);
+            margin-bottom: 2rem;
+            width: auto;
+            min-width: 260px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .btn-pdf i {
+            font-size: 1.4rem;
+        }
+
+        .btn-pdf:hover {
+            background: #b71c1c;
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px rgba(183, 28, 28, 0.35);
+        }
+
+        /* الأزرار الثلاثة: يوتيوب - جوجل بلاي - لينكد إن */
+        .social-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 1rem 0 2rem;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 0.85rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: white;
+            border: 1.5px solid #dce7ed;
+            color: #1e2a3e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+            min-width: 180px;
+        }
+
+        .btn-social i {
+            font-size: 1.4rem;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-3px);
+            border-color: #b0c4d1;
+            box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ألوان مميزة لكل منصة عند hover (اختياري) */
+        .btn-youtube:hover {
+            background: #ff0000;
+            border-color: #ff0000;
+            color: white;
+        }
+        .btn-youtube:hover i {
+            color: white;
+        }
+
+        .btn-googleplay:hover {
+            background: #0f9d58;
+            border-color: #0f9d58;
+            color: white;
+        }
+        .btn-googleplay:hover i {
+            color: white;
+        }
+
+        .btn-linkedin:hover {
+            background: #0077b5;
+            border-color: #0077b5;
+            color: white;
+        }
+        .btn-linkedin:hover i {
+            color: white;
+        }
+
+        /* تذييل + تنبيه للـ QR code */
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0edf2;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #4a6272;
+        }
+
+        .qr-hint {
+            background: #eef3fa;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .profile-header h1 {
+                font-size: 1.8rem;
+            }
+            .btn-pdf {
+                font-size: 1rem;
+                padding: 0.8rem 1.4rem;
+                min-width: 220px;
+            }
+            .btn-social {
+                padding: 0.7rem 1.2rem;
+                min-width: 150px;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="profile">
-                <!-- استبدل "profile.jpg" باسم صورتك الشخصية -->
-                <img src="Profile1.jpg" alt="Mohand Mahdi" class="profile-img">
-                
-                <h1>Mohand Mahdi</h1>
-                <p>Étudiant en Réseaux Électrique et Production D'énergie</p>
-                <div class="university-badge">
-                    Université de Béjaïa Abderrahmane-Mira
-                </div>
-            </div>
+<div class="container">
+    <!-- الهيدر مع إشارة Campus France -->
+    <div class="profile-header">
+        <h1>أحمد المنصوري <span style="font-weight:400; font-size:1.2rem;">| أحمد منصوري</span></h1>
+        <p>مرشح لبرنامج الماستر في الهندسة الحيوية – فرنسا</p>
+        <div class="campus-badge">
+            <i class="fas fa-graduation-cap"></i> Campus France · Études en France
         </div>
-    </header>
-    
-    <main>
-        <div class="container">
-            <h2 class="section-title">Mes Travaux Pratiques</h2>
-            
-            <div class="nav-tabs">
-                <div class="nav-tab active" data-target="all">Tous les TP</div>
-                <div class="nav-tab" data-target="reseaux">Réseaux électrique</div>
-                <div class="nav-tab" data-target="theorie">Théorie du champs</div>
-                <div class="nav-tab" data-target="electronique">Électronique de puissance</div>
-                <div class="nav-tab" data-target="schemas">Schémas et appareillage</div>
-                <div class="nav-tab" data-target="systeme">Système asservi</div>
-                <div class="nav-tab" data-target="capteur">Capteur</div>
-            </div>
-            
-            <!-- Section Tous les TP -->
-            <div id="all" class="content-section active">
-                <div class="tp-grid">
-                    <!-- TP Réseaux électrique -->
-                    <div class="tp-card" data-subject="reseaux">
-                        <div class="tp-number">1</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3 class="tp-title">Réseaux électrique</h3>
-                            <p class="tp-description">Travaux pratiques sur les réseaux électriques, l'analyse des circuits et la distribution d'énergie.</p>
-                            <a href="#" class="tp-link" data-subject="reseaux"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                    
-                    <!-- TP Théorie du champs -->
-                    <div class="tp-card" data-subject="theorie">
-                        <div class="tp-number">2</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-magnet"></i>
-                            </div>
-                            <h3 class="tp-title">Théorie du champs</h3>
-                            <p class="tp-description">Étude des champs électromagnétiques, des ondes et des principes de propagation.</p>
-                            <a href="#" class="tp-link" data-subject="theorie"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                    
-                    <!-- TP Électronique de puissance -->
-                    <div class="tp-card" data-subject="electronique">
-                        <div class="tp-number">3</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="tp-title">Électronique de puissance</h3>
-                            <p class="tp-description">Conception et analyse des convertisseurs de puissance et des systèmes électroniques.</p>
-                            <a href="#" class="tp-link" data-subject="electronique"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                    
-                    <!-- TP Schémas et appareillage -->
-                    <div class="tp-card" data-subject="schemas">
-                        <div class="tp-number">4</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-drafting-compass"></i>
-                            </div>
-                            <h3 class="tp-title">Schémas et appareillage</h3>
-                            <p class="tp-description">Lecture et conception de schémas électriques, étude des appareillages de protection.</p>
-                            <a href="#" class="tp-link" data-subject="schemas"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                    
-                    <!-- TP Système asservi -->
-                    <div class="tp-card" data-subject="systeme">
-                        <div class="tp-number">5</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <h3 class="tp-title">Systèmes asservis</h3>
-                            <p class="tp-description">Analyse et conception des systèmes de régulation et d'asservissement.</p>
-                            <a href="#" class="tp-link" data-subject="systeme"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                    
-                    <!-- TP Capteur -->
-                    <div class="tp-card" data-subject="capteur">
-                        <div class="tp-number">6</div>
-                        <div class="tp-content">
-                            <div class="subject-icon">
-                                <i class="fas fa-thermometer-half"></i>
-                            </div>
-                            <h3 class="tp-title">Capteur</h3>
-                            <p class="tp-description">Étude des capteurs, de leurs caractéristiques et de leurs applications.</p>
-                            <a href="#" class="tp-link" data-subject="capteur"><i class="fas fa-external-link-alt"></i> Voir les TP</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Sections individuelles لكل مادة -->
-            <div id="reseaux" class="content-section">
-                <a href="#" class="back-button"><i class="fas fa-arrow-left"></i> Retour à tous les TP</a>
-                <div class="subject-header">
-                    <h2>Réseaux électrique</h2>
-                    <p>Travaux pratiques sur les réseaux électriques</p>
-                </div>
-                <div class="tp-grid">
-                    <div class="tp-card">
-                        <div class="tp-number">1</div>
-                        <div class="tp-content">
-                            <h3 class="tp-title">TP 1: Analyse des circuits triphasés</h3>
-                            <p class="tp-description">Étude des systèmes triphasés équilibrés et déséquilibrés, mesure des tensions et courants.</p>
-                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
-                        </div>
-                    </div>
-                    <div class="tp-card">
-                        <div class="tp-number">2</div>
-                        <div class="tp-content">
-                            <h3 class="tp-title">TP 2: Protection des réseaux</h3>
-                            <p class="tp-description">Étude des dispositifs de protection : disjoncteurs, relais et fusibles.</p>
-                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
-                        </div>
-                    </div>
-                    <div class="tp-card">
-                        <div class="tp-number">3</div>
-                        <div class="tp-content">
-                            <h3 class="tp-title">TP 3: Qualité de l'énergie</h3>
-                            <p class="tp-description">Analyse des harmoniques, facteur de puissance et compensation d'énergie réactive.</p>
-                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="theorie" class="content-section">
-                <a href="#" class="back-button"><i class="fas fa-arrow-left"></i> Retour à tous les TP</a>
-                <div class="subject-header">
-                    <h2>Théorie du champs</h2>
-                    <p>Étude des champs électromagnétiques</p>
-                </div>
-                <div class="tp-grid">
-                    <div class="tp-card">
-                        <div class="tp-number">1</div>
-                        <div class="tp-content">
-                            <h3 class="tp-title">TP 1: Champ électrostatique</h3>
-                            <p class="tp-description">Étude du champ électrique créé par différentes distributions de charges.</p>
-                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
-                        </div>
-                    </div>
-                    <div class="tp-card">
-                        <div class="tp-number">2</div>
-                        <div class="tp-content">
-                            <h3 class="tp-title">TP 2: Champ magnétostatique</h3>
-                            <p class="tp-description">Analyse du champ magnétique produit par des courants électriques.</p>
-                            <a href="#" class="tp-link"><i class="fas fa-external-link-alt"></i> Voir le TP</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Sections pour les autres matières (بنفس الهيكل) -->
-            
-            <div class="last-updated">
-                Dernière mise à jour: <span id="current-date"></span>
-            </div>
-        </div>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Mohand Mahdi. Tous droits réservés.</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>mohand.mahdi@universite.fr</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+33 X XX XX XX XX</span>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
+    </div>
 
-    <script>
-        // إضافة التاريخ الحالي تلقائياً
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('fr-FR');
-        
-        // التنقل بين التبويبات
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                const targetId = tab.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-        
-        // التنقل إلى صفحة المادة عند النقر على رابط "Voir les TP"
-        document.querySelectorAll('.tp-link[data-subject]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const subject = link.getAttribute('data-subject');
-                
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                document.querySelector(`.nav-tab[data-target="${subject}"]`).classList.add('active');
-                
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                document.getElementById(subject).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-        
-        // زر الرجوع
-        document.querySelectorAll('.back-button').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                document.querySelector('.nav-tab[data-target="all"]').classList.add('active');
-                
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                document.getElementById('all').classList.add('active');
-            });
-        });
-        
-        // تأثيرات بسيطة عند التمرير
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.tp-card');
+    <div class="main-content">
+        <!-- المحتوى الجديد (تم استبدال المواد القديمة بمعلومات حديثة وشاملة) -->
+        <h2 class="section-title">من أنا؟</h2>
+        <div class="intro-text">
+            <i class="fas fa-quote-right" style="float: right; opacity: 0.3; font-size: 1.8rem; margin-right: 10px;"></i>
+            <strong>مهندس حيوي شغوف بالبحث والابتكار</strong> — أتقدم بملفي إلى جامعة ليون 1 و جامعة ستراسبورغ عبر منصة Campus France.  
+            أمتلك خبرة في المختبرات الطبية وتحليل البيانات، وأسعى لإكمال دراستي في برامج متقدمة تجمع بين البيوتكنولوجيا والهندسة الطبية.  
+            هدفي المساهمة في تطوير حلول تشخيصية ذكية، والاستفادة من بيئة البحث الفرنسية المرموقة.
+        </div>
+
+        <!-- معلومات أكاديمية وخبرات ودوافع (المحتوى الجديد كلياً) -->
+        <div class="grid-info">
+            <div class="info-card">
+                <i class="fas fa-university"></i>
+                <h3>التكوين الأكاديمي</h3>
+                <ul>
+                    <li>🎓 بكالوريوس في الهندسة الطبية الحيوية - جامعة القاهرة (2021-2025) <br> <span style="font-size:0.8rem;">معدل تراكمي: 3.8/4.0</span></li>
+                    <li>📘 شهادة لغة فرنسية (DELF B2) – معهد الفرنسي بالقاهرة 2024</li>
+                    <li>🔬 تدريب معتمد في تقنيات PCR و ELISA – المركز القومي للبحوث</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>الخبرات العملية</h3>
+                <ul>
+                    <li>💼 متدرب مساعد في مختبر "بيو لاب" – تحليل عينات، توثيق النتائج (6 أشهر)</li>
+                    <li>📊 مطور محتوى علمي – قناة يوتيوب متخصصة في التكنولوجيا الحيوية (أكثر من 12 ألف متابع)</li>
+                    <li>🧪 مشروع تخرج: "نظام ذكي للكشف المبكر عن الأمراض باستخدام الذكاء الاصطناعي"</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>الدوافع والرغبة في الدراسة بفرنسا</h3>
+                <p>تمتلك فرنسا بنية بحثية متطورة وشراكات صناعية قوية في مجال الهندسة الحيوية. أطمح للالتحاق ببرنامج <strong>Master Biotechnologies & Instrumentation Médicale</strong> حيث يمكنني العمل تحت إشراف باحثين عالميين، والاستفادة من منصات التكنولوجيا الحيوية المتقدمة، وتطوير مشروع مهني في مجال الأجهزة الطبية الذكية.</p>
+            </div>
+        </div>
+
+        <!-- المنطقة الحيوية: زر PDF لفتح OFFRE DE FORMATION ثم الأزرار الثلاثة (كما طلبت: زر pdf فوق الأزرار) -->
+        <div class="actions-area">
+            <!-- زر واحد لفتح الـ PDF الخاص بـ l'offre de formation (يُفضل فتحه في تبويب جديد) -->
+            <a href="#" id="openPdfBtn" class="btn-pdf" target="_blank">
+                <i class="fas fa-file-pdf"></i> 
+                📄 L'Offre de Formation (PDF)
+                <i class="fas fa-external-link-alt" style="font-size: 0.9rem;"></i>
+            </a>
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-        });
-    </script>
+            <!-- الأزرار الثلاثة أسفل زر الـ PDF بشكل مباشر -->
+            <div class="social-buttons">
+                <a href="#" id="youtubeLink" class="btn-social btn-youtube" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i> قناة يوتيوب
+                </a>
+                <a href="#" id="googleplayLink" class="btn-social btn-googleplay" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-google-play"></i> تطبيقي على Google Play
+                </a>
+                <a href="#" id="linkedinLink" class="btn-social btn-linkedin" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+        
+        <!-- تذكير بسيط – يمكن إضافة أي شهادات أو مهارات إضافية -->
+        <div style="background: #f8fafc; border-radius: 1.2rem; padding: 1rem 1.5rem; margin-top: 1rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
+                <div><i class="fas fa-code"></i> <strong>المهارات التقنية:</strong> Python, MATLAB, LabVIEW, AutoCAD, SPSS</div>
+                <div><i class="fas fa-language"></i> <strong>اللغات:</strong> العربية (لغة أم)، الإنجليزية (C1)، الفرنسية (B2 – مكثف حالياً)</div>
+            </div>
+        </div>
+
+        <!-- تذييل مع إشارة إلى أنه يمكن مسح QR code للوصول إلى هذا الموقع (ما يساعد حامل السيرة الذاتية) -->
+        <div class="footer-note">
+            <i class="fas fa-qrcode"></i>   هذا الموقع متاح عبر الرابط الموجود على QR code المطبوع في سيرتي الذاتية (CV)  
+            <div class="qr-hint">
+                ⚡ يمكن تحديث الروابط وملف PDF بسهولة من خلال تعديل المسارات أسفل الصفحة.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript: إدارة فتح PDF وتوجيه الأزرار إلى الروابط الحقيقية (يمكنك تعديل الروابط هنا حسب بياناتك) -->
+<script>
+    // ========== قم بتعديل هذه الروابط الثابتة لتناسب بياناتك الشخصية ==========
+    // رابط ملف عرض التكوين (l'offre de formation) – ضع المسار الصحيح لملف PDF الخاص بك
+    const OFFRE_PDF_URL = "docs/offre_formation_france.pdf";    // ⚠️ غيِّر هذا المسار إلى ملف PDF الموجود لديك
+    // في حال عدم وجود ملف حالي، يمكن استخدام رابط نموذجي مؤقت، ولكن الأفضل رفع ملف حقيقي مع الصفحة
+    // مثال: "https://votresite.com/campus-france-offre.pdf" — لكن يفضل وضعه في نفس المجلد
+    
+    // روابط حساباتك الشخصية (يوتيوب، جوجل بلاي، لينكد إن)
+    const YOUTUBE_URL = "https://www.youtube.com/@VotreChaineFrance";        // استبدل برابط قناتك الحقيقي
+    const GOOGLEPLAY_URL = "https://play.google.com/store/apps/details?id=com.votreapp"; // رابط تطبيقك على Google Play
+    const LINKEDIN_URL = "https://www.linkedin.com/in/votreprofil";           // رابط حساب LinkedIn الخاص بك
+    
+    // ========== لا تعدل ما دون هذا إلا إذا كنت تعرف ما تفعله ==========
+    
+    // عناصر DOM
+    const pdfBtn = document.getElementById('openPdfBtn');
+    const youtubeBtn = document.getElementById('youtubeLink');
+    const googleplayBtn = document.getElementById('googleplayLink');
+    const linkedinBtn = document.getElementById('linkedinLink');
+    
+    // دالة مساعدة لفتح الروابط بأمان
+    function safeOpen(url, isPdf = false) {
+        if (!url || url === "#" || url === "") {
+            alert("⚠️ الرابط غير مضبوط بعد! يرجى تحديث الروابط في الكود (JavaScript) بوضع رابطك الصحيح.");
+            console.warn("رابط فارغ أو غير صالح: ", url);
+            return;
+        }
+        // إذا كان الملف PDF ربما نتحقق من الامتداد أو نتعامل معه
+        if (isPdf && url.endsWith('.pdf')) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+    }
+    
+    // حدث زر PDF
+    pdfBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // إذا كان المسار مؤقتاً ولم يتم تعديله، نعطي تنبيهاً دودياً
+        if (OFFRE_PDF_URL === "docs/offre_formation_france.pdf") {
+            // تحقق إن كان المستخدم قد عدّل أم لا (تنبيه مساعد)
+            const userConfirmed = confirm("ملاحظة: لم تقم بعد بتعديل رابط ملف PDF الخاص بـ 'offre de formation'.\nهل تريد فتح رابط تجريبي؟ (سيفتح نموذج توضيحي) \nاضغط موافق لفتح مثال توضيحي، أو إلغاء لتعديل الرابط في الكود.");
+            if (userConfirmed) {
+                // رابط توضيحي (مثال على PDF) – يمكن استبداله أو حذفه
+                window.open("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", '_blank');
+            } else {
+                alert("الرجاء تعديل متغير OFFRE_PDF_URL في الجزء السفلي من الصفحة (JavaScript) بوضع مسار ملف PDF الحقيقي.");
+            }
+        } else {
+            safeOpen(OFFRE_PDF_URL, true);
+        }
+    });
+    
+    // ربط الأزرار بالروابط المخصصة
+    youtubeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (YOUTUBE_URL === "https://www.youtube.com/@VotreChaineFrance") {
+            alert("🔧 يرجى تحديث رابط قناة اليوتيوب في كود JavaScript (YOUTUBE_URL).");
+        } else {
+            safeOpen(YOUTUBE_URL);
+        }
+    });
+    
+    googleplayBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (GOOGLEPLAY_URL === "https://play.google.com/store/apps/details?id=com.votreapp") {
+            alert("📱 يرجى تحديث رابط تطبيق Google Play في كود JavaScript (GOOGLEPLAY_URL).");
+        } else {
+            safeOpen(GOOGLEPLAY_URL);
+        }
+    });
+    
+    linkedinBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (LINKEDIN_URL === "https://www.linkedin.com/in/votreprofil") {
+            alert("🔗 يرجى تحديث رابط حساب LinkedIn في كود JavaScript (LINKEDIN_URL).");
+        } else {
+            safeOpen(LINKEDIN_URL);
+        }
+    });
+    
+    // تحذير إضافي في حالة عدم تعديل الروابط (ظهور في console)
+    if (OFFRE_PDF_URL === "docs/offre_formation_france.pdf") {
+        console.warn("⚠️ [تنبيه]: لم يتم تعديل رابط ملف PDF الخاص بـ Offre de formation بعد. يرجى تغيير OFFRE_PDF_URL.");
+    }
+    if (YOUTUBE_URL === "https://www.youtube.com/@VotreChaineFrance") console.warn("⚠️ يوتيوب: الرابط الافتراضي قيد الاستخدام، قم بتعديله.");
+    if (GOOGLEPLAY_URL === "https://play.google.com/store/apps/details?id=com.votreapp") console.warn("⚠️ Google Play: الرابط الافتراضي قيد الاستخدام، قم بتعديله.");
+    if (LINKEDIN_URL === "https://www.linkedin.com/in/votreprofil") console.warn("⚠️ LinkedIn: الرابط الافتراضي قيد الاستخدام، قم بتعديله.");
+</script>
 </body>
 </html>
