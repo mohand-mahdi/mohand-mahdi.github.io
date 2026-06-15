@@ -478,6 +478,20 @@
         observer.observe(card);
     });
     setTimeout(() => cards.forEach(c => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }), 200);
+    <script>
+    // منع النقر الأيمن على الصور
+    document.addEventListener('contextmenu', function(e) {
+        if(e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // منع سحب الصور
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+</script>
 </script>
 </body>
 </html>
