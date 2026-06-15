@@ -478,8 +478,8 @@
         observer.observe(card);
     });
     setTimeout(() => cards.forEach(c => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }), 200);
-    <script>
-    // منع النقر الأيمن على الصور
+    
+  // Blocage du clic droit sur toutes les images
     document.addEventListener('contextmenu', function(e) {
         if(e.target.tagName === 'IMG') {
             e.preventDefault();
@@ -487,11 +487,19 @@
         }
     });
 
-    // منع سحب الصور
+    // Blocage du touchstart (long press) sur mobile
     document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
         img.addEventListener('dragstart', (e) => e.preventDefault());
     });
-</script>
+
+    // Désactiver la sélection / copie d'image
+    const style = document.createElement('style');
+    style.innerHTML = `img { -webkit-touch-callout: none; user-select: none; }`;
+    document.head.appendChild(style);
 </script>
 </body>
 </html>
