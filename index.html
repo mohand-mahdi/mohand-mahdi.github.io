@@ -425,8 +425,8 @@
     // --- GESTION DES LIENS SOCIAUX (MODIFIEZ ICI AVEC VOS VRAIES ADRESSES) ---
     // Remplacez ces variables par vos URLs personnelles
     const MY_YOUTUBE_URL = "https://www.youtube.com/@votreChaine";        // <- À MODIFIER
-    const MY_GOOGLEPLAY_URL = "https://play.google.com/store/apps/details?id=com.hisabi.univpro"; // ex: votre application "Hisabi Univ Pro"
-    const MY_LINKEDIN_URL = "https://www.linkedin.com/in/mohand-mahdi/";   // <- À MODIFIER
+    const MY_GOOGLEPLAY_URL = "https://play.google.com/store/apps/details?id=com.hisabi.univpro"; 
+    const MY_LINKEDIN_URL = "https://www.linkedin.com/in/mohand-mahdi-30ab93416?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"; 
 
     // Boutons principaux
     const youtubeBtn = document.getElementById('youtubeLink');
@@ -438,20 +438,14 @@
     function setLink(btn, url, demoMsg) {
         if(btn) {
             btn.href = url;
-            btn.addEventListener('click', (e) => {
-                if(url === demoMsg || url === "#" || url === "") {
-                    e.preventDefault();
-                    alert("⚠️ Veuillez configurer ce lien dans le code JavaScript (remplacer la variable correspondante).");
-                }
-            });
         }
     }
 
-    setLink(youtubeBtn, MY_YOUTUBE_URL, "https://www.youtube.com/@votreChaine");
-    setLink(googleplayBtn, MY_GOOGLEPLAY_URL, "https://play.google.com/store/apps/details?id=com.hisabi.univpro");
-    setLink(linkedinBtn, MY_LINKEDIN_URL, "https://www.linkedin.com/in/mohand-mahdi/");
-    setLink(footerLinkedin, MY_LINKEDIN_URL, "https://www.linkedin.com/in/mohand-mahdi/");
-    setLink(footerGooglePlay, MY_GOOGLEPLAY_URL, "https://play.google.com/store/apps/details?id=com.hisabi.univpro");
+    setLink(youtubeBtn, MY_YOUTUBE_URL);
+    setLink(googleplayBtn,MY_GOOGLEPLAY_URL);
+    setLink(linkedinBtn, MY_LINKEDIN_URL);
+    setLink(footerLinkedin, MY_LINKEDIN_URL);
+    setLink(footerGooglePlay, MY_GOOGLEPLAY_URL);
 
     // --- BOUTON PDF (offre de formation) ---
     const pdfBtn = document.getElementById('openPdfBtn');
